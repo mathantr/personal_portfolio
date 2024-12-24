@@ -7,15 +7,14 @@ import 'package:portfolio/ui/widget/text_widget.dart';
 
 import '../widget/about_widget.dart';
 
-class SegmentedControlExample extends StatefulWidget {
-  const SegmentedControlExample({super.key});
+class StepperListWidget extends StatefulWidget {
+  const StepperListWidget({super.key});
 
   @override
-  State<SegmentedControlExample> createState() =>
-      _SegmentedControlExampleState();
+  State<StepperListWidget> createState() => _StepperListWidgetState();
 }
 
-class _SegmentedControlExampleState extends State<SegmentedControlExample> {
+class _StepperListWidgetState extends State<StepperListWidget> {
   String _selectedSegment = 'About';
 
   @override

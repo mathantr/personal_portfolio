@@ -18,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             appBarWidget(),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             NameIntroWidget(),
             BoxProfileContainer(),
@@ -80,8 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 20),
                       child: SizedBox(
-                          width: double.infinity,
-                          child: SegmentedControlExample()),
+                          width: double.infinity, child: StepperListWidget()),
                     ),
                   ],
                 ),
@@ -90,10 +91,14 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-                height: MediaQuery.of(context).size.height * 2,
-                width: double.infinity,
-                child: StepperList()),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+              child: SizedBox(
+                  height: w > 600 ? h * 2.5 : h * 6,
+                  width: double.infinity,
+                  child: StepperList()),
+            ),
           ],
         ),
       ),

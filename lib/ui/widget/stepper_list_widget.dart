@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/ui/const/const_color.dart';
+import 'package:portfolio/ui/widget/text_widget.dart';
 
 class StepperList extends StatefulWidget {
   const StepperList({super.key});
@@ -32,111 +33,129 @@ class _StepperListState extends State<StepperList> {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
+
     return ListView(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         for (int i = 0; i < title.length; i++) ...[
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
+            height: w > 800
+                ? h * 0.6
+                : h * 1.3, // Adjust height based on screen width
             child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Left Column
                 if (i % 2 == 0) ...[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(title[i],
-                          textAlign: TextAlign.justify,
-                          style: const TextStyle(color: Colors.white)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: w * 0.3,
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
-                            border: Border(
-                                left: BorderSide(
-                                  color: ConstColor.green,
-                                ),
-                                right: BorderSide(color: ConstColor.green),
-                                bottom: BorderSide(color: ConstColor.green),
-                                top: BorderSide(color: ConstColor.green))),
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              label[i],
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(body[i],
-                                style: const TextStyle(color: Colors.white)),
-                          ],
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        TextWidget(
+                          text: title[i],
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontSize: w > 600
+                              ? 28
+                              : 22, // Adjust font size for larger screens
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        Container(
+                          width: w > 600 ? w * 0.4 : w * 0.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: ConstColor.green),
+                          ),
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextWidget(
+                                text: label[i],
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: w > 600 ? 22 : 18,
+                              ),
+                              const SizedBox(height: 10),
+                              TextWidget(
+                                text: body[i],
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: w > 600 ? 14 : 12,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ] else ...[
-                  Container(
-                    width: w * 0.30,
-                  )
+                  Container(width: w > 600 ? w * 0.4 : w * 0.5),
                 ],
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
+
+                // Circle and Line Connector
                 Column(
                   children: [
                     Container(
                       height: 20,
                       width: 20,
                       decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: ConstColor.green),
+                        shape: BoxShape.circle,
+                        color: ConstColor.green,
+                      ),
                     ),
                     Expanded(
                       child: Container(width: 3, color: ConstColor.green),
                     ),
                   ],
                 ),
+
+                // Right Column
                 if (i % 2 != 0) ...[
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(title[i],
-                          style: const TextStyle(color: Colors.white)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: w * 0.3,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: ConstColor.green)),
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              label[i],
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(body[i],
-                                style: const TextStyle(color: Colors.white)),
-                          ],
+                  const SizedBox(width: 10),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextWidget(
+                          text: title[i],
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontSize: w > 600 ? 28 : 22,
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        Container(
+                          width: w > 600 ? w * 0.5 : w * 0.4,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: ConstColor.green),
+                          ),
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextWidget(
+                                text: label[i],
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: w > 600 ? 22 : 18,
+                              ),
+                              const SizedBox(height: 10),
+                              TextWidget(
+                                text: body[i],
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: w > 600 ? 14 : 12,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ]
               ],
