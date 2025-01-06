@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/ui/screen/home_screen.dart';
+import 'package:portfolio/util/common_responsive.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: Builder(builder: (context) {
+        CommonResponsive.init(context);
+        return HomeScreen();
+      }),
     );
   }
 }
