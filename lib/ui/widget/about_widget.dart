@@ -182,13 +182,16 @@ class AboutWidget extends StatelessWidget {
                                         width: 20,
                                         fit: BoxFit.cover),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
                         ),
                       ],
                     ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

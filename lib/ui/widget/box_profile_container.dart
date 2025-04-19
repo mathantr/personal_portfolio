@@ -12,6 +12,12 @@ class BoxProfileContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorizeColors = [
+      Colors.white,
+      ConstColor.lightBlue,
+      Colors.yellow,
+      Colors.red,
+    ];
     return CommonResponsive.w < 600
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -101,21 +107,49 @@ class BoxProfileContainer extends StatelessWidget {
                     height: 75,
                     width: 75,
                   ),
-                  TextWidget(
-                    text: 'LinkedIn',
-                    fontSize: 20,
-                    color: Colors.white.withValues(alpha: 0.5),
-                  ),
+                  AnimatedTextKit(repeatForever: true, animatedTexts: [
+                    ColorizeAnimatedText(
+                      'LinkedIn',
+                      textStyle: TextStyle(
+                          fontSize: 22.0,
+                          fontFamily: 'Horizon',
+                          fontWeight: FontWeight.w600),
+                      colors: colorizeColors,
+                    ),
+                  ]),
                   Spacer(),
                   Image.network(
                       'https://img.icons8.com/ios_filled/200/FFFFFF/github.png',
                       height: 50,
                       width: 50,
                       fit: BoxFit.cover),
-                  TextWidget(
-                    text: 'Github',
-                    fontSize: 20,
-                    color: Colors.white.withValues(alpha: 0.5),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const SizedBox(width: 20.0, height: 100.0),
+                      const Text(
+                        'Git',
+                        style: TextStyle(fontSize: 28.0, color: Colors.white),
+                      ),
+                      const SizedBox(width: 10.0, height: 100.0),
+                      DefaultTextStyle(
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontFamily: 'Horizon',
+                        ),
+                        child: AnimatedTextKit(
+                          repeatForever: true,
+                          animatedTexts: [
+                            RotateAnimatedText('Hub',
+                                textStyle: TextStyle(
+                                    color: ConstColor.lightBlue, fontSize: 24)),
+                          ],
+                          onTap: () {
+                            print("Tap Event");
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   Spacer(),
                 ],

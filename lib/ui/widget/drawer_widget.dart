@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/ui/const/const_color.dart';
+import 'package:portfolio/ui/screen/experience.dart';
 import 'package:portfolio/ui/screen/personal_info.dart';
 import 'package:portfolio/ui/widget/text_widget.dart';
 
@@ -49,20 +50,23 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   ));
             },
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.account_circle),
-          //   title: TextWidget(
-          //     text: 'Personal Info',
-          //     fontSize: 16,
-          //     fontWeight: FontWeight.w500,
-          //   ),
-          //   onTap: () {
-          //     setState(() {
-          //       // selectedPage = 'Profile';
-          //     });
-          //     Navigator.of(context).pop(); // Close the Drawer
-          //   },
-          // ),
+          ListTile(
+            leading: const Icon(
+              Icons.work_history,
+            ),
+            title: TextWidget(
+              text: 'Experience',
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ExperienceScreen(),
+                  ));
+            },
+          ),
           // ListTile(
           //   leading: const Icon(Icons.settings),
           //   title: const Text('Settings'),

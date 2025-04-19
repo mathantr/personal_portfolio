@@ -30,30 +30,28 @@ class _DownloadPDFPageState extends State<DownloadPDFPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: InkWell(
-        onTap: _downloadPDF, // Handle tap to download
-        child: Container(
-          height: 50,
-          width: 200,
-          // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: ConstColor.green, width: 2)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(
-                CupertinoIcons.cloud_download,
-                color: Colors.white,
-              ),
-              Text(
-                "Download Resume",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ],
-          ),
+    return InkWell(
+      onTap: _downloadPDF, // Handle tap to download
+      child: Container(
+        height: 50,
+        width: 200,
+        // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: ConstColor.green, width: 2)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(
+              CupertinoIcons.cloud_download,
+              color: Colors.white,
+            ),
+            Text(
+              "Download Resume",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ],
         ),
       ),
     );
